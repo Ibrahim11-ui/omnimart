@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Backend Build
+backend/build/
+backend/.gradle/
+*.class
+*.jar
+*.war
+
+# IDE & Environment
+.idea/
+.vscode/
+*.iml
+.env
+.env.local
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniMart E-Commerce Platform | System Project Report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4F46E5;
+      --primary-dark: #3730A3;
+      --bg: #0F172A;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --accent-cyan: #06B6D4;
+      --accent-emerald: #10B981;
+      --accent-amber: #F59E0B;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0B0F19;
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+    .report-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #111827;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    .header-section {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 28px;
+      margin-bottom: 36px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(99, 102, 241, 0.2);
+      color: #A5B4FC;
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.2rem;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+    .meta-item strong { color: #fff; }
+    h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.45rem;
+      color: #FFFFFF;
+      margin: 36px 0 16px 0;
+      border-left: 4px solid var(--primary);
+      padding-left: 12px;
+    }
+    h3 {
+      font-size: 1.15rem;
+      color: #E2E8F0;
+      margin: 22px 0 10px 0;
+    }
+    p, li {
+      color: #CBD5E1;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+    ul, ol { padding-left: 24px; margin-bottom: 18px; }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+    }
+    .card h4 { color: #fff; margin-bottom: 8px; font-size: 1.05rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.88rem;
+    }
+    th {
+      background: rgba(15, 23, 42, 0.9);
+      color: #A5B4FC;
+      padding: 12px 14px;
+      text-align: left;
+      border: 1px solid var(--border);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+    td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: #CBD5E1;
+    }
+    tr:nth-child(even) { background: rgba(255, 255, 255, 0.015); }
+    code {
+      font-family: 'Courier New', monospace;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #F43F5E;
+      font-size: 0.88rem;
+    }
+    pre {
+      background: #0B0F19;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: #E2E8F0;
+      margin: 16px 0;
+    }
+    .footer-note {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    @media print {
+      body { background: #fff; color: #000; padding: 0; }
+      .report-wrapper { border: none; box-shadow: none; padding: 0; background: #fff; }
+      th { background: #f1f5f9; color: #000; }
+      td, p, li { color: #1e293b; }
+      .card { background: #f8fafc; border: 1px solid #cbd5e1; }
+      code { color: #b91c1c; background: #f1f5f9; }
+    }
+  </style>
+</head>
+<body>
+  <div class="report-wrapper">
+    <div class="header-section">
+      <span class="badge">Official Project Report</span>
+      <h1>OmniMart: Online E-Commerce Platform</h1>
+      <p class="subtitle">Complete Technical Design, Multi-Role Architecture, and Implementation Report</p>
+      <div class="meta-grid">
+        <div class="meta-item"><strong>Document ID:</strong> GUVI-FS-2024-OMNIMART-02</div>
+        <div class="meta-item"><strong>Tech Stack:</strong> Java 21 (Spring Boot 3.4), React 19, TypeScript</div>
+        <div class="meta-item"><strong>Database:</strong> H2 In-Memory DB & LocalStorage</div>
+        <div class="meta-item"><strong>Copyright:</strong> &copy; 2024 GUVI Geek Network Pvt. Ltd.</div>
+      </div>
+    </div>
+
+    <h2>1. Executive Summary</h2>
+    <p>
+      The <strong>OmniMart E-Commerce Platform</strong> is a comprehensive full-stack marketplace application designed to facilitate end-to-end commerce operations across three distinct user categories: <strong>Administrators</strong>, <strong>Sellers</strong>, and <strong>Buyers</strong>.
+    </p>
+    <p>
+      The platform features synchronized cross-role reactive state: any transaction initiated by a buyer (such as placing an order) instantly decrements warehouse stock, alerts the merchant seller, updates the customer's live tracking milestone timeline, and creates an audit entry in the administrator's real-time monitoring feed.
+    </p>
+
+    <h2>2. User Roles & Dedicated Dashboards</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h4>🛡️ 1. Administrator Dashboard</h4>
+        <ul>
+          <li><strong>User Management:</strong> CRUD user accounts, role switching (Admin/Seller/Buyer), account status toggle (Active/Suspended).</li>
+          <li><strong>Product Catalog Compliance:</strong> Platform-wide oversight with compliance flags (Approved, Under Review, Flagged).</li>
+          <li><strong>Master Order Fulfillment:</strong> Full lifecycle visibility, status overrides, and cancel/refund resolution.</li>
+          <li><strong>System Activity Monitoring:</strong> Real-time streaming audit logs with color-coded severity.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>🏪 2. Merchant Seller Dashboard</h4>
+        <ul>
+          <li><strong>Product Listings:</strong> Full listing CRUD with inline stock counters and price management.</li>
+          <li><strong>Customer Order Processing:</strong> Step-by-step fulfillment pipeline (Pending &rarr; Packed &rarr; Shipped &rarr; Delivered).</li>
+          <li><strong>Inventory Overview & Alerts:</strong> Visual stock health distribution bars and 1-click Quick Restock (+25 units).</li>
+          <li><strong>Sales Performance & Trends:</strong> Revenue KPI cards and interactive SVG monthly sales trajectory graphs.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>🛍️ 3. Consumer Buyer Portal</h4>
+        <ul>
+          <li><strong>Storefront & Browsing:</strong> Dynamic search, category filters, price range slider, star rating sorting.</li>
+          <li><strong>Bag & Multi-Step Checkout:</strong> Slide-over cart, promo discount codes (WELCOME20, SAVE15), instant receipt generation.</li>
+          <li><strong>Live Order Milestone Tracker:</strong> Visual status pipeline (Placed &rarr; Packed &rarr; In Transit &rarr; Delivered).</li>
+          <li><strong>Browsing History & Wishlist:</strong> Recently viewed products and automatic price-drop alert notifications.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>3. Dual Architecture & Technology Stack</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Layer</th>
+          <th>Technology</th>
+          <th>Role in Platform</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Frontend Framework</strong></td>
+          <td>React 19 + TypeScript (Vite)</td>
+          <td>Reactive UI with strict typing and blazing-fast HMR.</td>
+        </tr>
+        <tr>
+          <td><strong>Frontend Styling</strong></td>
+          <td>Pure Vanilla CSS</td>
+          <td>Glassmorphism, dark radial theme, custom scrollbars, keyframe animations (zero Tailwind dependency).</td>
+        </tr>
+        <tr>
+          <td><strong>Client State Engine</strong></td>
+          <td>React Context (StoreContext)</td>
+          <td>Central reactive state management with localStorage persistence.</td>
+        </tr>
+        <tr>
+          <td><strong>Backend Framework</strong></td>
+          <td>Java 21 + Spring Boot 3.4.3</td>
+          <td>Enterprise RESTful microservices architecture with Spring MVC.</td>
+        </tr>
+        <tr>
+          <td><strong>Persistence Layer</strong></td>
+          <td>Spring Data JPA + Hibernate</td>
+          <td>Object-relational mapping with automated entity lifecycle management.</td>
+        </tr>
+        <tr>
+          <td><strong>Database</strong></td>
+          <td>H2 In-Memory DB</td>
+          <td>Embedded SQL database accessible via web console at <code>/h2-console</code>.</td>
+        </tr>
+        <tr>
+          <td><strong>Build & Packaging</strong></td>
+          <td>Gradle Wrapper + npm</td>
+          <td>Zero-config compilation via <code>gradlew.bat</code> and <code>npm run dev</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>4. REST API Endpoints Specification</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Endpoint</th>
+          <th>Access</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>GET</code></td>
+          <td>/api/users</td>
+          <td>Admin</td>
+          <td>List all registered user accounts.</td>
+        </tr>
+        <tr>
+          <td><code>POST</code></td>
+          <td>/api/users</td>
+          <td>Admin</td>
+          <td>Register new user with role assignment and confirmation message.</td>
+        </tr>
+        <tr>
+          <td><code>PATCH</code></td>
+          <td>/api/users/{id}/status</td>
+          <td>Admin</td>
+          <td>Toggle account status (Active / Suspended).</td>
+        </tr>
+        <tr>
+          <td><code>GET</code></td>
+          <td>/api/products</td>
+          <td>Public</td>
+          <td>Catalog query with category, status, and search filters.</td>
+        </tr>
+        <tr>
+          <td><code>POST</code></td>
+          <td>/api/products</td>
+          <td>Seller/Admin</td>
+          <td>Create product listing with confirmation message.</td>
+        </tr>
+        <tr>
+          <td><code>PATCH</code></td>
+          <td>/api/products/{id}/stock</td>
+          <td>Seller</td>
+          <td>Adjust stock levels and trigger low-stock alerts.</td>
+        </tr>
+        <tr>
+          <td><code>PATCH</code></td>
+          <td>/api/products/{id}/compliance</td>
+          <td>Admin</td>
+          <td>Set compliance status (Approved, Under Review, Flagged).</td>
+        </tr>
+        <tr>
+          <td><code>POST</code></td>
+          <td>/api/orders</td>
+          <td>Buyer</td>
+          <td>Checkout & purchase with automatic inventory deduction.</td>
+        </tr>
+        <tr>
+          <td><code>PATCH</code></td>
+          <td>/api/orders/{id}/status</td>
+          <td>Seller/Admin</td>
+          <td>Advance fulfillment status (Processing, Shipped, Delivered).</td>
+        </tr>
+        <tr>
+          <td><code>POST</code></td>
+          <td>/api/orders/{id}/cancel</td>
+          <td>Admin</td>
+          <td>Cancel order and restore product stock to inventory.</td>
+        </tr>
+        <tr>
+          <td><code>GET</code></td>
+          <td>/api/activities</td>
+          <td>Admin</td>
+          <td>Real-time streaming system activity audit logs.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>5. Quick Execution Guide</h2>
+    <p>To run the platform locally:</p>
+    <pre><code># 1. Run the Java Spring Boot Backend
+cd omnimart-backend
+.\gradlew.bat bootRun
+# Backend runs at: http://localhost:8080 (H2 Console: http://localhost:8080/h2-console)
+
+# 2. Run the React Frontend Application
+cd omnimart-ecommerce
+npm install
+npm run dev
+# Frontend runs at: http://localhost:5173</code></pre>
+
+    <div class="footer-note">
+      &copy; 2024 GUVI Geek Network Pvt. Ltd. All rights reserved. No part of this document may be reproduced or distributed without prior written permission.
+    </div>
+  </div>
+</body>
+</html>
